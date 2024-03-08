@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VBI</title>
+    <meta name="description" content="" />
+
+    <link rel="stylesheet" type="text/css" href="app.css" />
+
+</head>
+
+<body>
+
+    <section class="content-wrapper">
+        <div class="grid_group" id="grid_group">
+            <div class="block" onclick="popapp(this.innerHTML)">1</div>
+            <div class="block" onclick="popapp(this.innerHTML)">2</div>
+            <div class="block" onclick="popapp(this.innerHTML)">3</div>
+            <div class="block" onclick="popapp(this.innerHTML)">4</div>
+        </div>
+        <div class="row">
+            <div>
+                <input type="checkbox" id="checkbox" onclick="colorFunction()" />
+                <label for="scales">Заменить цвет</label>
+            </div>
+            <div class="btn" onclick="btnclick()">
+                Добавить блок
+            </div>
+        </div>
+
+    </section>
+</body>
+<div onclick="popapp()" id="bacground" class="global_backdrop"></div>
+
+<div class="modal" id="modal">
+
+    <div class="cross" onclick="popapp()">
+        <svg width="48" height="48" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M4.11 2.697L2.698 4.11 6.586 8l-3.89 3.89 1.415 1.413L8 9.414l3.89 3.89 1.413-1.415L9.414 8l3.89-3.89-1.415-1.413L8 6.586l-3.89-3.89z"
+                fill="#000"></path>
+        </svg>
+    </div>
+    <div id="text_block">
+
+    </div>
+</div>
+
+<script>
+    function colorFunction() {
+        var group = document.getElementById("grid_group");
+        group.classList.toggle('new_color');
+    }
+
+    function popapp(text) {
+        var modals = document.getElementById("modal");
+        var bacgrounds = document.getElementById("bacground");
+
+        bacgrounds.classList.toggle("is-active");
+        modal.classList.toggle('is-active');
+        text_block = document.getElementById("text_block");
+        text_block.innerHTML = '';
+        if (modal.classList.contains("is-active")) {
+            text_block.insertAdjacentHTML('beforeend', text);
+        }
+
+    }
+    var i=4;
+    function btnclick() {
+        i++;
+        var group = document.getElementById("grid_group");
+        group.insertAdjacentHTML('beforeend', '<div class="block" onclick="popapp(this.innerHTML)">'+ i+'</div>');
+    }
+</script>
